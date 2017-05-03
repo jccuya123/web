@@ -1,0 +1,25 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+<head>
+	<title>Poll</title>
+</head>
+
+<div class = 'con'>
+	<div class = 'index_header'>
+		<p>QUESTIONS:</p>
+	</div>
+
+	{% if latest_question_list %}
+	<div class = 'index_question'>
+	    <ul>
+	    {% for question in latest_question_list %}
+			<li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+	    {% endfor %}
+	    </ul>
+	</div>
+	{% else %}
+	    <p>No polls are available.</p>
+	{% endif %}
+</div>
