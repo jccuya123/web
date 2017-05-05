@@ -16,7 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from servers import views
 urlpatterns = [
 	url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^$', views.ServerList.as_view(), name='servers_list'),
+    url(r'^insert$', views.ServerInsert.as_view(), name='servers_insert'),
+    url(r'^update/(?P<pk>\d+)$', views.ServerUpdate.as_view(), name='servers_update'),
+    url(r'^delete/(?P<pk>\d+)$', views.ServerDelete.as_view(), name='servers_delete'),
 ]
